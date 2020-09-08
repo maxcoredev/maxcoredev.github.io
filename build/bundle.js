@@ -787,8 +787,8 @@ var app = (function () {
     			if (switch_instance) create_component(switch_instance.$$.fragment);
     			attr_dev(link, "href", "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
     			attr_dev(link, "rel", "stylesheet");
-    			add_location(link, file$1, 25, 4, 540);
-    			add_location(main, file$1, 28, 0, 676);
+    			add_location(link, file$1, 25, 4, 531);
+    			add_location(main, file$1, 28, 0, 667);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -858,9 +858,9 @@ var app = (function () {
     function instance$2($$self, $$props, $$invalidate) {
     	let component;
 
-    	if (location.pathname === "/") {
+    	if (location.hash === "") {
     		component = Home;
-    	} else if (location.pathname === "/buttons") {
+    	} else if (location.hash === "#buttons") {
     		component = Buttons;
     	}
 
