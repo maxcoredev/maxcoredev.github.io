@@ -1,0 +1,103 @@
+.button {
+    color:#000;
+    padding:0;
+    border:0;
+    background:transparent;
+    font-weight: var(--bold);
+    border-radius:var(--border-radius);
+    transition:all var(--transition-duration) ease;
+    display:inline-flex;
+    justify-content: center;
+    position:relative;
+    cursor:pointer;
+    outline:none;
+    vertical-align:top;
+    box-sizing:border-box;
+    text-decoration:none;
+    position:relative;
+    z-index:1;
+}
+
+/* Prepare background for hover */
+
+.button:before {
+    border:1px solid var(--border-color);
+    background:#fff;
+    border-radius:var(--border-radius);
+    z-index:-1;
+    background-clip:padding-box;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    content:'';
+}
+
+/* Actions */
+
+.button:focus                  {background:var(--focus);}
+.button:hover:not([disabled])  {background:var(--hover);}
+.button:active:not([disabled]) {background:var(--active);}
+
+/* Size */
+
+.button.tiny             {line-height:24px;min-height:24px;min-width:24px;padding:0 12px;font-size:var(--tiny-font-size);}
+.button.small            {line-height:30px;min-height:30px;min-width:30px;padding:0 15px;font-size:var(--small-font-size);}
+.button.medium           {line-height:36px;min-height:36px;min-width:36px;padding:0 18px;font-size:var(--medium-font-size);}
+.button, .button.regular {line-height:42px;min-height:42px;min-width:42px;padding:0 21px;font-size:var(--regular-font-size);}
+.button.big              {line-height:48px;min-height:48px;min-width:48px;padding:0 24px;font-size:var(--big-font-size);}
+.button.large            {line-height:54px;min-height:54px;min-width:54px;padding:0 27px;font-size:var(--large-font-size);}
+
+/* Misc */
+
+.button.wide {width:100%;}
+.button.square {padding:0;}
+
+/* Disabled */
+
+.button[disabled] {opacity:0.5;cursor:default;}
+
+/* Colored */
+
+.button.blue, .button.green, .button.red {color:#fff;}
+
+.button.blue:before, .button.green:before, .button.red:before {border-color:rgba(0,0,0,0.1)}
+
+.button.blue:before  {background:var(--blue);}
+.button.green:before {background:var(--green);}
+.button.red:before   {background:var(--red);}
+
+.button.blue:focus,                  .button.green:focus,                  .button.red:focus                  {background:var(--focus);}
+.button.blue:hover:not([disabled]),  .button.green:hover:not([disabled]),  .button.red:hover:not([disabled])  {background:var(--light);}
+.button.blue:active:not([disabled]), .button.green:active:not([disabled]), .button.red:active:not([disabled]) {background:var(--active);}
+
+/* Outlined */
+
+.button.outline.blue {color:var(--blue);}
+.button.outline.blue:before {border-color:var(--blue);}
+.button.outline.blue:focus:before,
+.button.outline.blue:hover:not([disabled]):before,
+.button.outline.blue.pending:before {background:var(--blue);}
+
+.button.outline.green {color:var(--green);}
+.button.outline.green:before {border-color:var(--green);}
+.button.outline.green:focus:before,
+.button.outline.green:hover:not([disabled]):before,
+.button.outline.green.pending:before {background:var(--green);}
+
+.button.outline.red {color:var(--red);}
+.button.outline.red:before {border-color:var(--red);}
+.button.outline.red:focus:before,
+.button.outline.red:hover:not([disabled]):before,
+.button.outline.red.pending:before {background:var(--red);}
+
+.button.outline:before {background:none;}
+.button.outline:hover:not([disabled]),
+.button.outline:focus {color:#fff;}
+
+/* Pending */
+
+.button.pending {color:transparent !important;}
+.button.pending:after {color:#000;content:'...';position:absolute;top:0;left:0;right:0;bottom:0;}
+.button.pending.blue:after, .button.pending.green:after, .button.pending.red:after {color:#fff;}
