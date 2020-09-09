@@ -9,14 +9,32 @@
     outline: none;
     text-decoration: none;
     position: relative;
+    display: inline-flex;
+    align-items: center; /* vertical */
+    justify-content: center; /* horisontal */
 }
+
+/* Misc */
+
+.button.wide {width:100%;}
+.button.square {padding:0;}
+
+/* Disabled */
+
+.button[disabled] {opacity:0.7;cursor:default;}
+
+/* Pending */
+
+.button.pending {color:transparent !important;text-shadow:none !important;}
+.button.pending svg {opacity:0;}
+.button.pending:after {color:#000;content:'...';position:absolute;top:0;left:0;right:0;bottom:0;display:inline-flex;align-items:center;justify-content:center;}
 
 /* States */
 
-.button.current {background:var(--current);}
-.button:focus   {background:var(--focus);}
-.button:hover   {background:var(--hover);}
-.button:active  {background:var(--active);}
+.button.current:not([disabled]) {background:var(--current);}
+.button:focus:not([disabled])   {background:var(--focus);}
+.button:hover:not([disabled])   {background:var(--hover);}
+.button:active:not([disabled])  {background:var(--active);}
 
 .button:not(.red):not(.green):not(.blue):not(.on-dark) {background-clip:padding-box;}
 
@@ -27,26 +45,40 @@
 
 /* Size */
 
-.button.tiny             {line-height:24px;min-height:24px;min-width:24px;padding:0 12px;font-size:var(--tiny-font-size);}
-.button.small            {line-height:30px;min-height:30px;min-width:30px;padding:0 15px;font-size:var(--small-font-size);}
-.button.medium           {line-height:36px;min-height:36px;min-width:36px;padding:0 18px;font-size:var(--medium-font-size);}
-.button, .button.regular {line-height:42px;min-height:42px;min-width:42px;padding:0 21px;font-size:var(--regular-font-size);}
-.button.big              {line-height:48px;min-height:48px;min-width:48px;padding:0 24px;font-size:var(--big-font-size);}
-.button.large            {line-height:54px;min-height:54px;min-width:54px;padding:0 27px;font-size:var(--large-font-size);}
+.button.tiny             {height:24px;min-width:24px;padding:0 12px;font-size:var(--font-size-tiny);}
+.button.small            {height:30px;min-width:30px;padding:0 15px;font-size:var(--font-size-small);}
+.button.medium           {height:36px;min-width:36px;padding:0 18px;font-size:var(--font-size-medium);}
+.button, .button.regular {height:42px;min-width:42px;padding:0 21px;font-size:var(--font-size-regular);}
+.button.big              {height:48px;min-width:48px;padding:0 24px;font-size:var(--font-size-big);}
+.button.large            {height:54px;min-width:54px;padding:0 27px;font-size:var(--font-size-large);}
 
-/* Misc */
+/* Icons */
 
-.button.wide {width:100%;}
-.button.square {padding:0;}
+.button svg {height:100%;}
+.button.icon-left {padding-left:0;}
+.button.icon-right {padding-right:0;}
 
-/* Disabled */
+.button.tiny.icon-left svg                           {padding:0   6px  0   6px;}
+.button.small.icon-left svg                          {padding:1px 7px  1px 8px;}
+.button.medium.icon-left svg                         {padding:2px 9px  2px 9px;}
+.button.icon-left svg, .button.regular.icon-left svg {padding:3px 10px 3px 11px;}
+.button.big.icon-left svg                            {padding:4px 12px 4px 12px;}
+.button.large.icon-left svg                          {padding:5px 13px 5px 14px;}
 
-.button[disabled] {opacity:0.6;cursor:default;}
+.button.tiny.icon-right svg                            {padding:0   6px  0   6px;}
+.button.small.icon-right svg                           {padding:1px 8px  1px 7px;}
+.button.medium.icon-right svg                          {padding:2px 9px  2px 9px;}
+.button.icon-right svg, .button.regular.icon-right svg {padding:3px 11px 3px 10px;}
+.button.big.icon-right svg                             {padding:4px 12px 4px 12px;}
+.button.large.icon-right svg                           {padding:5px 14px 5px 13px;}
 
 /* Colored */
 
+.button.blue:after, .button.green:after, .button.pending.red:after {color:#fff;}
+
 .button.blue, .button.green, .button.red {
     color: #fff;
+    fill: #fff;
     text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
     border-color: var(--border-color-light);
     background-clip: border-box;
@@ -73,31 +105,29 @@
 /* Outlined */
 
 .button.outlined {background:transparent;}
+.button.outlined:not(:focus):not(:hover):not(:active):not(.current):not(.on-dark) {text-shadow:none;}
 
-.button.outlined.red {color:var(--red);border-color:var(--red);}
-.button.outlined.red:hover {background:var(--red);}
+.button.outlined.red {color:var(--red);fill:var(--red);border-color:var(--red);}
+.button.outlined.red:not([disabled]):hover {background:var(--red);}
+.button.outlined.red:after {color:var(--red);}
 
-.button.outlined.green {color:var(--green);border-color:var(--green)}
-.button.outlined.green:hover {background:var(--green);}
+.button.outlined.green {color:var(--green);fill:var(--green);border-color:var(--green)}
+.button.outlined.green:not([disabled]):hover {background:var(--green);}
+.button.outlined.green:after {color:var(--green);}
 
-.button.outlined.blue  {color:var(--blue);border-color:var(--blue)}
-.button.outlined.blue:hover {background:var(--blue);}
+.button.outlined.blue  {color:var(--blue);fill:var(--blue);border-color:var(--blue)}
+.button.outlined.blue:not([disabled]):hover {background:var(--blue);}
+.button.outlined.blue:after {color:var(--blue);}
 
-.button.outlined:focus, .button.outlined:hover, .button.outlined:active, .button.outlined.current {color:#fff}
+.button.outlined:focus, .button.outlined:hover:not([disabled]), .button.outlined:active, .button.outlined.current {color:#fff;fill:#fff;}
 
-.button.outlined:focus, .button.outlined:hover, .button.outlined:active, .button.outlined.current {border-color:var(--border-color-light);}
+.button.outlined:focus, .button.outlined:hover:not([disabled]), .button.outlined:active, .button.outlined.current {border-color:var(--border-color-light);}
 
 /* On dark */
 
-.button.on-dark, .button.on-dark:focus, .button.on-dark:hover, .button.on-dark:active, .button.on-dark.current {
+.button.on-dark, .button.on-dark:focus, .button.on-dark:hover:not([disabled]), .button.on-dark:active, .button.on-dark.current {
     border-color: transparent;
     border-top-color: rgba(255,255,255,0.1);
     border-left-color: rgba(255,255,255,0.1);
     box-shadow: 1px 1px 0 rgba(0,0,0,0.5);
 }
-
-/* Pending */
-
-.button.pending {color:transparent !important;text-shadow:none;}
-.button.pending:after {color:#000;content:'...';position:absolute;top:0;left:0;right:0;bottom:0;}
-.button.pending.blue:after, .button.pending.green:after, .button.pending.red:after {color:#fff;}

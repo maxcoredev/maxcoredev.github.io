@@ -1,11 +1,11 @@
 body {
     --font-size:         20px; --line-height:         33px;  /* Just for articles */
-    --tiny-font-size:    13px; --tiny-line-height:    20px;
-    --small-font-size:   14px; --small-line-height:   21px;
-    --medium-font-size:  15px; --medium-line-height:  23px;
-    --regular-font-size: 16px; --regular-line-height: 24px;
-    --big-font-size:     17px; --big-line-height:     26px;
-    --large-font-size:   18px; --large-line-height:   28px;
+    --font-size-tiny:    13px; --line-height-tiny:    20px;
+    --font-size-small:   14px; --line-height-small:   21px;
+    --font-size-medium:  15px; --line-height-medium:  23px;
+    --font-size-regular: 16px; --line-height-regular: 24px;
+    --font-size-big:     17px; --line-height-big:     26px;
+    --font-size-large:   18px; --line-height-large:   28px;
 
     --focus:   hsl(0,0%,96%);
     --hover:   hsl(0,0%,92%);
@@ -31,10 +31,11 @@ body {
     --blue-active:  hsl(215,85%,46%);
 
 	--bold: 500;
-	--wrapper: calc((100% - 768px) / 2); /* Instead of wrapper */
-	--wrapper-text: calc((100% - 768px) / 2 + 24px); /* Instead of wrapper */
     --border-radius: 2px;
     --transition-duration: 0.2s;
+
+	--wrapper: calc((100% - 768px) / 2); /* Instead of wrapper */
+	--paragraph: max(calc((100% - 768px) / 2 + 24px), 24px);
 
 	--border-color: rgba(0,0,0,0.3);
     --border-color-dark: rgba(0,0,0,0.4);
@@ -60,11 +61,14 @@ html {min-height:100vh;}
 body {min-height:100vh;margin:0;overflow-y:scroll;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;}
 
 main > * {margin-left:auto;margin-right:auto;}
-main > *:not(img):not(column):not(article):not(section):not(pre) {max-width:768px;padding-left:24px;padding-right:24px;}
+main > *:not(img):not(column):not(article):not(section) {padding-left:var(--paragraph);padding-right:var(--paragraph);}
+
+.wrapper {padding-left:var(--wrapper);padding-right:var(--wrapper);}
+.paragraph {padding-left:var(--paragraph);padding-right:var(--paragraph);}
 
 /* Fonts */
 
-body, input, button, select, textarea {font-family:'IBM Plex Sans', sans-serif;font-size:var(--big-font-size);line-height:var(--big-line-height);}
+body, input, button, select, textarea {font-family:'IBM Plex Sans', sans-serif;font-size:var(--font-size-big);line-height:var(--line-height-big);}
 
 /* Article */
 
