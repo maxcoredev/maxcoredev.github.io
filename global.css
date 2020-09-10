@@ -7,28 +7,31 @@ body {
     --font-size-big:     17px; --line-height-big:     26px;
     --font-size-large:   18px; --line-height-large:   28px;
 
-    --focus:   hsl(0,0%,96%);
-    --hover:   hsl(0,0%,92%);
-    --current: hsl(0,0%,88%);
-    --active:  hsl(0,0%,84%);
+    --hover:   hsl(0,0%,96%);
+    --current: hsl(0,0%,94%);
+    --focus:   hsl(0,0%,92%);
+    --active:  hsl(0,0%,90%);
 
     --red:         hsl(0,80%,54%);
     --red-focus:   hsl(0,80%,56%);
     --red-hover:   hsl(0,80%,58%);
     --red-current: hsl(0,80%,40%);
     --red-active:  hsl(0,80%,46%);
+    --red-alpha:   hsla(0,80%,54%,0.25);
 
 	--green:         hsl(110,90%,40%);
     --green-focus:   hsl(110,90%,41%);
     --green-hover:   hsl(110,90%,42%);
     --green-current: hsl(110,90%,38%);
     --green-active:  hsl(110,90%,36%);
+    --green-alpha:   hsla(110,90%,40%,0.25);
 
 	--blue:         hsl(215,85%,50%);
     --blue-focus:   hsl(215,85%,52%);
     --blue-hover:   hsl(215,85%,54%);
     --blue-current: hsl(215,85%,48%);
     --blue-active:  hsl(215,85%,46%);
+	--blue-alpha:   hsla(215,85%,50%,0.25);
 
 	--bold: 500;
     --border-radius: 2px;
@@ -37,14 +40,17 @@ body {
 	--wrapper: calc((100% - 768px) / 2); /* Instead of wrapper */
 	--paragraph: max(calc((100% - 768px) / 2 + 24px), 24px);
 
-	--border-color: rgba(0,0,0,0.3);
-    --border-color-dark: rgba(0,0,0,0.4);
     --border-color-light: rgba(0,0,0,0.1);
+	--border-color: rgba(0,0,0,0.2);
+    --border-color-medium: rgba(0,0,0,0.3);
+    --border-color-dark: rgba(0,0,0,0.4);
 }
 
 /* Reset */
 
 * {box-sizing:border-box;vertical-align:top;}
+
+table {border-collapse:collapse;}
 
 /* Misc */
 
@@ -53,15 +59,15 @@ a:hover {text-decoration:underline;}
 
 img {display:block;max-width:100%;}
 
-b {font-weight:var(--bold);}
+b, th {font-weight:var(--bold);}
 
 /* Layout */
 
 html {min-height:100vh;}
 body {min-height:100vh;margin:0;overflow-y:scroll;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;}
 
-main > * {margin-left:auto;margin-right:auto;}
-main > *:not(img):not(column):not(article):not(section) {padding-left:var(--paragraph);padding-right:var(--paragraph);}
+main > *, main > .p {margin-left:auto;margin-right:auto;}
+main > *:not(img):not(column):not(article):not(section):not(div), main > .p {padding-left:var(--paragraph);padding-right:var(--paragraph);}
 
 .wrapper {padding-left:var(--wrapper);padding-right:var(--wrapper);}
 .paragraph {padding-left:var(--paragraph);padding-right:var(--paragraph);}
@@ -72,7 +78,7 @@ body, input, button, select, textarea {font-family:'IBM Plex Sans', sans-serif;f
 
 /* Article */
 
-h1, .h1 {font-size:34px;}
+h1, .h1 {font-size:48px;}
 h2, .h2 {font-size:32px;}
 h3, .h3 {font-size:28px;}
 h4, .h4 {font-size:24px;}
@@ -88,7 +94,8 @@ h4 a, .h4 a, .h4,
 h5 a, .h5 a, .h5,
 h6 a, .h6 a, .h6 {padding-top:0.1em;padding-bottom:0.1em;}
 
-p, .p, ul, ol, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {margin-top:var(--line-height);margin-bottom:0;}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {margin-top:var(--line-height);margin-bottom:calc(var(--line-height) / 2);}
+p, .p, ul, ol {margin-bottom:var(--line-height);margin-top:0;}
 p, .p, li {font-size:var(--font-size);line-height:var(--line-height);}
 
 ul, ol {}

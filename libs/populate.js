@@ -1,4 +1,4 @@
-const SSRUtils = new class {
+const PopulateUtils = new class {
 
     parseJSON(string) {
         string = string.trim();
@@ -43,7 +43,7 @@ const SSRUtils = new class {
 
 }
 
-const SSR = new class {
+const Populate = new class {
 
     constructor() {
 
@@ -80,13 +80,13 @@ const SSR = new class {
         let depth = 0;
         let loop = root => {
             let scope = 'scope' + '\\.[\\w$]+'.repeat(depth);
-            let affecteds = SSRUtils.sub(root, `[data-${attribute}]`, `:scope ${this.li} [data-${attribute}]`);
+            let affecteds = PopulateUtils.sub(root, `[data-${attribute}]`, `:scope ${this.li} [data-${attribute}]`);
             this.setInfluencers(scope, affecteds, attribute, properties, type, name, model.id);
             for (let affected of affecteds)
-                affected.SSRSCOPE = model;
+                affected.PopulateSCOPE = model;
             if (root.querySelectorAll(`${this.li}`).length) {
                 depth++;
-                for (let list of SSRUtils.sub(root, `${this.li}`, `:scope ${this.li} ${this.li}`))
+                for (let list of PopulateUtils.sub(root, `${this.li}`, `:scope ${this.li} ${this.li}`))
                     loop(list);
             }
         }
@@ -106,10 +106,10 @@ const SSR = new class {
 
             if (model.element)
                 for (let property in model.element.dataset)
-                    model[property] = SSRUtils.parse(model.element.dataset[property], variableType);
+                    model[property] = PopulateUtils.parse(model.element.dataset[property], variableType);
 
             if (type == 'list') {
-                model.elements[property] = SSRUtils.sub(model.element, `[data-list="scope.${property}"]`, `:scope ${this.li} [data-list="scope.${property}"]`);
+                model.elements[property] = PopulateUtils.sub(model.element, `[data-list="scope.${property}"]`, `:scope ${this.li} [data-list="scope.${property}"]`);
             } else {
                 model.elements[property] = document.querySelectorAll(`[data-model="${name}.${property}"]`);
             }
@@ -128,10 +128,10 @@ const SSR = new class {
                         } else if (element.type == 'select-multiple') {
                             model[property] = [...element.options].filter(x => x.selected).map(x => x.value);
                         } else {
-                            model[property] = SSRUtils.parse(element.value, variableType);
+                            model[property] = PopulateUtils.parse(element.value, variableType);
                         }
                     } else {
-                        model[property] = SSRUtils.parse(element.innerHTML, variableType);
+                        model[property] = PopulateUtils.parse(element.innerHTML, variableType);
                     }
                 }
             }
@@ -150,7 +150,7 @@ const SSR = new class {
 
         model = new Proxy(model, {
             set(model, property, value) {
-                model[property] = SSRUtils.parse(value, model.types[property]);;
+                model[property] = PopulateUtils.parse(value, model.types[property]);;
                 if (model.element && property in model.element.dataset)
                     model.element.dataset[property] = value;
                 if (property in model.elements) {
@@ -172,8 +172,8 @@ const SSR = new class {
                         }
                     }
                 }
-                if (SSR.influencers[type][name])
-                    SSR.draw(type, name, property, value, type == 'list' ? model : null);
+                if (Populate.influencers[type][name])
+                    Populate.draw(type, name, property, value, type == 'list' ? model : null);
                 return true;
             }
         });
@@ -215,7 +215,7 @@ const SSR = new class {
         let influencer = model ? this.influencers[type][name][model.id] : this.influencers[type][name];
         for (let attribute in influencer[property]) {
             for (let element of influencer[property][attribute]) {
-                let scope = element.SSRSCOPE;
+                let scope = element.PopulateSCOPE;
                 element[attribute] = eval(element.getAttribute('data-' + attribute)) ? true : false;
             }
         }
@@ -265,7 +265,7 @@ class Model {
         for (let method in methods)
             this[method] = methods[method];
         this.element = document.querySelector('[data-model="' + name + '"]');
-        return SSR.add(name, properties, this, 'model');
+        return Populate.add(name, properties, this, 'model');
     }
 
 }
@@ -277,7 +277,7 @@ class List extends QuerySet {
         for (let method in methods)
             this[method] = methods[method];
         for (let element of document.querySelectorAll('[data-list="' + name + '"]'))
-            this.push(SSR.add(name, properties, {element: element}, 'list'));
+            this.push(Populate.add(name, properties, {element: element}, 'list'));
     }
 
 }

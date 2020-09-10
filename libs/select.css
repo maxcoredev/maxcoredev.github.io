@@ -1,0 +1,50 @@
+.select {opacity:0;height:35px;border:0;display:block;}
+@media (max-width:760px) {.select {z-index:2;}}
+
+.select-select {position:relative;}
+.select-focused {}
+.select-opened {z-index:1;}
+.select-single {}
+.select-multiple {}
+
+    .select-shadow {border:1px solid rgba(0,0,0,0.25);border-radius:2px;position:absolute;top:0;left:0;width:100%;min-height:35px;background:#fff;bottom:0;}
+    .select-focused .select-shadow {box-shadow:0 0 0 3px var(--blue-alpha);border-color:var(--blue);}
+    .select-opened .select-shadow {bottom:auto;}
+
+    .select-single .select-selection:before {position:absolute;top:14px;right:10px;content:'';border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid #000;}
+    .select-single .select-selection:after  {position:absolute;top:14px;right:11px;content:'';border-left:4px solid transparent;border-right:4px solid transparent;border-top:3px solid #fff;}
+    .select-single.select-select-opened .select-selection:before {border-top:0;border-bottom:5px solid #000;}
+    .select-single.select-select-opened .select-selection:after  {border-top:0;border-bottom:3px solid #fff;top:16px;}
+
+    .select-select * {box-sizing:border-box;outline:none;}
+
+        .select-selection {position:relative;border:1px solid transparent;line-height:23px;min-height:35px;padding:5px 5px 0 5px;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+        .select-single .select-selection {padding-left:10px;cursor:default;}
+        .select-multiple .select-selection {cursor:text;}
+        .select-opened .select-selection {}
+            .select-placeholder {}
+            .select-multiple .select-placeholder {position:absolute;}
+            .select-tags {vertical-align:top;display:inline;}
+                .select-tag {vertical-align:top;display:inline-block;margin:0 5px 5px 0;}
+                    .select-tag-remove {cursor:pointer;vertical-align:top;display:inline-block;line-height:20px;height:23px;width:23px;background:var(--blue);border:1px solid rgba(0,0,0,0.25);color:#fff;text-align:center;border-radius:2px 0 0 2px;}
+                    .select-tag-remove:hover {box-shadow:inset 0 35px 0 rgba(0,0,0,0.05);}
+                    @media (max-width:760px) {.select-tag-remove {display:none;}}
+                    .select-tag-title {cursor:default;vertical-align:top;display:inline-block;line-height:21px;padding:0 5px;border:1px solid rgba(0,0,0,0.25);border-left-width:0;border-radius:0 2px 2px 0;}
+                    @media (max-width:760px) {.select-tag-title {border-radius:2px;border-left-width:1px;}}
+            .select-search-tags {color:#000;width:1px;max-width:100%;padding:0 !important;height:23px;border:0 !important;margin-bottom:5px;display:inline-block;vertical-align:top;}
+        .select-no-value .select-selection {color:#999;}
+        .select-dropdown {min-height:61px;position:absolute;top:100%;left:0;width:100%;padding-top:30px;display:none;border:1px solid transparent;border-top:0;}
+        .select-opened .select-dropdown {display:block;}
+        .select-multiple .select-dropdown,
+        .select-no-search .select-dropdown {border-top:1px solid rgba(0,0,0,0.25);min-height:31px;padding-top:0;}
+            .select-search {width:0;position:absolute;top:100%;display:block;height:0;border-radius:0 !important;padding:0 10px !important;border:1px solid transparent !important;border-top:0 !important;border-bottom:0 !important;background:transparent;}
+            .select-opened.select-has-search .select-search {width:100%;height:30px;border-top:1px solid rgba(0,0,0,0.25) !important;border-bottom:1px solid rgba(0,0,0,0.25) !important;}
+            .select-no-results {line-height:30px;padding:0 10px;position:absolute;color:#999;}
+            .select-results {max-height:210px;overflow-y:auto;position:relative;background:#fff;}
+                .select-optgroup {}
+                    .select-optgroup-label {padding-left:10px;color:#999;line-height:30px;}
+                    .select-options {}
+                        .select-option {padding:0 5px 0 10px;line-height:30px;}
+                        .select-option-selected {background:#f1f1f6;box-shadow:inset 0 1px 0 rgba(0,0,0,0.05), 0 1px 0 rgba(0,0,0,0.1)}
+                        .select-option-hovered {background:var(--blue);color:#fff;box-shadow:inset 0 1px 0 rgba(0,0,0,0.05), inset 0 -1px 0 rgba(0,0,0,0.05);}
+                        .select-optgroup .select-option {padding-left:20px;}
