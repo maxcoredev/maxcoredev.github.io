@@ -423,7 +423,6 @@ var app = (function () {
     	let t13;
     	let p6;
     	let t15;
-    	let div;
     	let img;
     	let img_src_value;
     	let t16;
@@ -492,7 +491,6 @@ var app = (function () {
     			p6 = element("p");
     			p6.textContent = "But, that does not mean, that images, tables or charts should match that same 720px width. That's an another type of data.";
     			t15 = space();
-    			div = element("div");
     			img = element("img");
     			t16 = space();
     			h21 = element("h2");
@@ -546,25 +544,22 @@ var app = (function () {
     			add_location(p6, file, 17, 0, 991);
     			if (img.src !== (img_src_value = "/images/nature.jpg")) attr_dev(img, "src", img_src_value);
     			set_style(img, "margin", "0 auto");
-    			add_location(img, file, 20, 1, 1167);
-    			set_style(div, "height", "250px");
-    			set_style(div, "overflow", "hidden");
-    			add_location(div, file, 19, 0, 1122);
-    			add_location(h21, file, 23, 0, 1230);
-    			add_location(p7, file, 25, 0, 1248);
-    			add_location(i1, file, 26, 3, 1448);
-    			add_location(p8, file, 26, 0, 1445);
-    			add_location(h22, file, 28, 0, 1555);
+    			add_location(img, file, 19, 0, 1122);
+    			add_location(h21, file, 21, 0, 1178);
+    			add_location(p7, file, 23, 0, 1196);
+    			add_location(i1, file, 24, 3, 1396);
+    			add_location(p8, file, 24, 0, 1393);
+    			add_location(h22, file, 26, 0, 1503);
     			attr_dev(a, "href", "https://bahamas10.github.io/ryb/");
-    			add_location(a, file, 30, 109, 1681);
-    			add_location(p9, file, 30, 0, 1572);
-    			add_location(h23, file, 34, 0, 1815);
-    			add_location(i2, file, 36, 27, 1858);
-    			add_location(i3, file, 36, 60, 1891);
-    			add_location(p10, file, 36, 0, 1831);
-    			add_location(p11, file, 37, 0, 1971);
-    			add_location(p12, file, 38, 0, 2176);
-    			add_location(br, file, 40, 0, 2250);
+    			add_location(a, file, 28, 109, 1629);
+    			add_location(p9, file, 28, 0, 1520);
+    			add_location(h23, file, 32, 0, 1763);
+    			add_location(i2, file, 34, 27, 1806);
+    			add_location(i3, file, 34, 60, 1839);
+    			add_location(p10, file, 34, 0, 1779);
+    			add_location(p11, file, 35, 0, 1919);
+    			add_location(p12, file, 36, 0, 2124);
+    			add_location(br, file, 38, 0, 2198);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -590,8 +585,7 @@ var app = (function () {
     			insert_dev(target, t13, anchor);
     			insert_dev(target, p6, anchor);
     			insert_dev(target, t15, anchor);
-    			insert_dev(target, div, anchor);
-    			append_dev(div, img);
+    			insert_dev(target, img, anchor);
     			insert_dev(target, t16, anchor);
     			insert_dev(target, h21, anchor);
     			insert_dev(target, t18, anchor);
@@ -643,7 +637,7 @@ var app = (function () {
     			if (detaching) detach_dev(t13);
     			if (detaching) detach_dev(p6);
     			if (detaching) detach_dev(t15);
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(img);
     			if (detaching) detach_dev(t16);
     			if (detaching) detach_dev(h21);
     			if (detaching) detach_dev(t18);
