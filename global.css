@@ -97,7 +97,7 @@ h4 a, .h4 a, .h4,
 h5 a, .h5 a, .h5,
 h6 a, .h6 a, .h6 {padding-top:0.1em;padding-bottom:0.1em;}
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {margin-top:var(--line-height);}
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {margin-top:var(--line-height);margin-bottom:0;}
 p, .p, ul, ol {margin-top:calc(var(--line-height) / 3);margin-bottom:var(--line-height);}
 p, .p, li {font-size:var(--font-size);line-height:var(--line-height);}
 
