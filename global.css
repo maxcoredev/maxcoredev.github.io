@@ -7,6 +7,9 @@ body {
     --font-size-big:     17px; --line-height-big:     26px;
     --font-size-large:   18px; --line-height-large:   28px;
 
+    --grey:         rgba(0,0,0,0.5);
+    --grey-on-dark: rgba(255,255,255,0.5);
+
     --hover:   hsl(0,0%,96%);
     --current: hsl(0,0%,94%);
     --focus:   hsl(0,0%,92%);
